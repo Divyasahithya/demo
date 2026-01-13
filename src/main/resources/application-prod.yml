@@ -2,14 +2,36 @@
 server:
   port: 8082
 spring:
+  jpa:
+    hibernate:
+      ddl-auto: update  
+    properties:
+      hibernate:
+      dialect: org.hibernate.dialect.MySQLDialect
   datasource:
     url: ${SPRING_DATASOURCE_URL}
     username: ${SPRING_DATASOURCE_USERNAME}
     password: ${SPRING_DATASOURCE_PASSWORD}
-   
-  jpa:
-    hibernate:
-      ddl-auto: none
+  
+    
+logging:
+  level: 
+    root: INFO
+  file:
+    path: logs/app.log
+  logback:
+    rollingpolicy:
+      clean-history-on-start: true
+      max-file-size: 10MB
+      max-history: 100
+
+  pattern:
+    file: "%d{ISO8602} %-5level [%thread] %logger -%msg%n"
+  
+      
+
+    
+    
 
 
 
